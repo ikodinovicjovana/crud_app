@@ -6,12 +6,12 @@
             </div>
             <div class="modal-body">
                 <form id="categoryForm" name="categoryForm" class="form-horizontal"
-                      >
+                      onsubmit="setTimeout(function(){window.location.reload();},10);">
                     @csrf
                     <input hidden type="text" name="categoty_id" id="category_id">
                     <div class="form-group">
                         <select name="parent_id" id="parent_id" class="border mt-2 py-2 bg-white rounded-xl z-50 overflow-auto max-h-52">
-                            <option value="{{ count(\App\Models\Category::all()) }}"></option>
+                            <option value="0"></option>
 
                             @foreach(\App\Models\Category::all() as $category)
                                 <option value="{{ $category->id }}" style="color: grey;">{{ ucwords($category->name) }}</option>
@@ -27,4 +27,3 @@
         </div>
     </div>
 </div>
-{{--onsubmit="setTimeout(function(){window.location.reload();},10);"--}}

@@ -37,7 +37,7 @@
             $(function () {
                 $("#createNewCategory").click(function () {
                     $('#category_id').val('');
-                    // $('#categoryForm').trigger('reset');
+                    $('#categoryForm').trigger('reset');
                     $('#modalHeading').html('Add New Category');
                     $('#ajaxModal').modal('show');
                 });
@@ -62,8 +62,8 @@
                         },
                         success: function (response) {
                             if (response) {
-                                // $("#categoryForm")[0].reset();
-                                // $('#ajaxModal').modal('hide');
+                                $("#categoryForm")[0].reset();
+                                $('#ajaxModal').modal('hide');
                             }
                         }
                     })

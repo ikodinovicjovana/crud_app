@@ -54,7 +54,7 @@ class CategoryController extends Controller
     {
         $attr = request()->validate([
             'parent_id' => '',
-            'name' => 'required|unique:categories,name'
+            'name' => 'required'
         ]);
 
         $category->update($attr);

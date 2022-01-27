@@ -1,3 +1,4 @@
+
 <x-layout>
     <body>
     <x-form-container >
@@ -12,8 +13,8 @@
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
                 <select name="parent_id" id="parent_id" class="border mt-2 py-2 bg-white rounded-xl z-50 overflow-auto max-h-52">
-                    <option value="{{ $category->parent_id }}" style="color: grey;">{{ $category->parent->name }}</option>
-                    <option value="0"></option>
+                    <option value="{{ $category->parent_id }}" style="color: grey;">{{ empty($category->parent->name) ? '' : $category->parent->name }}</option>
+                    <option value="{{ count(\App\Models\Category::all()) }}"></option>
 
                     @foreach(\App\Models\Category::all()->skip($category->parent_id) as $category)
                         <option value="{{ $category->id }}" style="color: grey;">{{ ucwords($category->name) }}</option>

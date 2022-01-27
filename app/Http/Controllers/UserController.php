@@ -33,7 +33,7 @@ class UserController extends Controller
 
         User::create($attr);
 
-        return redirect('/')->with('success', 'A new user has been created.');
+        return redirect('/users')->with('success', 'A new user has been created.');
     }
 
 

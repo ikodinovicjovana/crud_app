@@ -20,6 +20,11 @@
 <body class="bg-gray-100" style="font-family: Open Sans, sans-serif">
 <section class="px-6 py-8">
         <div class="mt-8 md:mt-0 flex  items-center justify-content-end">
+            @guest
+                @if(Request::is('/'))
+                    <a href="/register" class="text-xs font-bold uppercase text-blue-500">Register</a>
+                @endif
+            @endguest
             @auth
                 <span class="text-xs font-bold uppercase">Welcome, {{ auth()->user()->name }}</span>
 

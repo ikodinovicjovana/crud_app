@@ -20,6 +20,10 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
+Route::resource('categories', CategoryController::class)->middleware('auth');
+Route::resource('items', ItemController::class)->middleware('auth');
+Route::resource('users', UserController::class)->middleware('auth');
+
 Route::get('/', function () {
     return view('sessions.create');
 });
@@ -35,7 +39,7 @@ Route::patch('categories/{category:id}', [CategoryController::class, 'update'])-
 Route::delete('categories/{category:id}', [CategoryController::class, 'destroy'])->middleware('auth');
 
 Route::get('login', [SessionController::class, 'create'])->middleware('guest');
-Route::post('sessions', [SessionController::class, 'store'])->middleware('auth');
+Route::post('sessions', [SessionController::class, 'store'])->middleware('auth')->name('login');
 Route::post('logout', [SessionController::class, 'destroy'])->middleware('auth');
 Route::get('register', [RegisterController::class, 'create']);
 Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
@@ -47,7 +51,7 @@ Route::patch('items/{item:name}', [ItemController::class, 'update'])->middleware
 Route::delete('items/{item:name}', [ItemController::class, 'destroy'])->middleware('auth');
 
 
-Route::get('new-user', [UserController::class, 'create'])->middleware('guest');
+Route::get('new-user', [UserController::class, 'create'])->middleware('auth');
 Route::post('users', [UserController::class, 'store']);
 Route::get('users/{user:name}', [UserController::class, 'edit'])->middleware('auth');
 Route::patch('users/{user:name}', [UserController::class, 'update'])->middleware('auth');

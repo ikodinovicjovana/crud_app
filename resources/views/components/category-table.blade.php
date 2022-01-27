@@ -5,7 +5,7 @@
         <div class="text-sm text-gray-900">{{ $category->id }}</div>
     </x-table-layout-td>
     <x-table-layout-td>
-        <div class="text-sm text-gray-900">{{ $category->parent_id }}</div>
+        <div class="text-sm text-gray-900">{{ empty($category->parent->name) ? '' : $category->parent->name }}</div>
     </x-table-layout-td>
     <x-table-layout-td>
         {{ $category->name }}

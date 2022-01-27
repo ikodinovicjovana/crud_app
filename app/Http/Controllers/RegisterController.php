@@ -21,9 +21,11 @@ class RegisterController extends Controller
             'password' => 'required|min:7'
         ]);
 
-        User::create($attr);
+       $user = User::create($attr);
 
-        return redirect('/')->with('success', 'A new user has been created.');
+        auth()->login($user);
+
+        return redirect('/welcome')->with('success', 'A new user has been created.');
     }
 
 }
