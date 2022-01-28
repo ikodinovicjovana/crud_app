@@ -39,7 +39,7 @@ Route::patch('categories/{category:id}', [CategoryController::class, 'update'])-
 Route::delete('categories/{category:id}', [CategoryController::class, 'destroy'])->middleware('auth');
 
 Route::get('login', [SessionController::class, 'create'])->middleware('guest');
-Route::post('sessions', [SessionController::class, 'store'])->middleware('auth')->name('login');
+Route::post('sessions', [SessionController::class, 'store']);
 Route::post('logout', [SessionController::class, 'destroy'])->middleware('auth');
 Route::get('register', [RegisterController::class, 'create']);
 Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
